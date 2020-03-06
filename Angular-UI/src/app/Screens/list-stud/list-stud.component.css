@@ -1,0 +1,13 @@
+h2{
+    font-family: "Times New Roman", Times, serif;
+    margin-left: 20px;
+    font-weight: bold }
+
+mat-cell {
+    display: flex;
+    justify-content: flex;
+}
+
+mat-card{
+    margin: 20px;
+}

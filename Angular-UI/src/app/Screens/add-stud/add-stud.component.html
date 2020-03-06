@@ -1,0 +1,83 @@
+<div class="container">
+  <h2 class="text-center">{{AddStudent}}</h2>
+    
+
+
+<div class="form-group">
+  <h4><label for="docx"></label></h4>
+    <div class="fileinput fileinput-new" data-providers="fileinput">
+      <div>Choose Profile Photo
+        <br>
+        <div>
+        <img *ngIf="show" [src]="'http://localhost:62441//Images/' + model.StudImg">
+      </div>
+      <div>
+        <img *ngIf="!show" [src]="imageUrl">
+      </div>
+        <br>
+        <br>
+        <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)" [(ngModel)]="model.StudImg"  required>
+      </div>
+        <span class="fileinput-filename"></span>
+    </div>  
+  </div>
+  <br>
+
+  <div>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Enter Name" [(ngModel)]="model.StudName"
+       name="StudName" required> 
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field> 
+      <input matInput [matDatepicker]="picker" type="text"placeholder="Choose a DOB"
+        [(ngModel)]="model.StudDOB" name="StudDOB" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>    
+    </mat-form-field>
+
+     <!-- <input type="date" name="StudDOB" [(ngModel)]="model.StudDOB"> -->
+    <!-- <ejs-datepicker id='datepicker' placeholder='Select a date' [value]='value' [(ngModel)]="model.StudDOB" ></ejs-datepicker> -->
+
+    <!-- <div class="input-group">
+      <input class="form-control" placeholder="yyyy-mm-dd"
+             name="StudDOB" [(ngModel)]="model.StudDOB" ngbDatepicker #d="ngbDatepicker">
+ 
+        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button> 
+     </div>
+  <br> -->
+
+  <div>
+      <mat-form-field>
+        <mat-label>Select Degree *</mat-label>
+          <mat-select [(ngModel)]="model.StudEdu">
+            <mat-option *ngFor="let data of educations" [value]="data.value" 
+              name="StudEdu">
+              {{data.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+  </div>
+
+  <div>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Enter Mobile Number" [(ngModel)]="model.StudMob" name="StudMob" required> 
+      </mat-form-field>
+  </div>
+
+  <div>
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Enter Email" [(ngModel)]="model.StudEmail" name="StudEmail" required> 
+      </mat-form-field>
+  </div>
+
+          
+
+    <button class="btn btn-success" (click)="add()">{{btnTitle}}</button>
+    &nbsp; 
+    <button class="btn btn-danger" (click)="cancel()">Cancel</button>
+
+</div>

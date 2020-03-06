@@ -1,0 +1,81 @@
+<div>
+<br> 
+  <h2>Student List</h2>
+
+  <button mat-raised-button (click)="logout()" class="btn btn-outline-danger" style="color:rgb(0, 0, 0); margin-left: 1000px">
+    <i class="material-icons" style="color:black" > power_settings_new </i> Logout 
+  </button>
+  <br>
+  <mat-card class="card">
+    <button mat-raised-button (click)="new()" class="btn btn-primary btn-lg active" >
+        <mat-icon>add</mat-icon>Add Student
+    </button> 
+  <br>
+  <br>
+  <div>
+   <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                <ng-container class = "hidden">
+                        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data.StudID}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="StudImg">
+                        <mat-header-cell *matHeaderCellDef class="color-white">
+                          Profile Photo
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let data">
+                          <img [src]="'http://localhost:62441//Images/' + data.StudImg" 
+                          style= "object-fit: cover; border-radius: 8px;"height="50" width="50">                  
+                        </mat-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="StudName">
+                        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data.StudName}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="StudDOB">
+                        <mat-header-cell *matHeaderCellDef> Date of Birth </mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data.StudDOB | date : 'MM/dd/yyyy'}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="StudEdu">
+                        <mat-header-cell *matHeaderCellDef> Education </mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data.StudEdu}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="StudMob">
+                        <mat-header-cell *matHeaderCellDef> Mobile Number </mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data.StudMob}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="StudEmail">
+                        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data.StudEmail}} </mat-cell>
+                </ng-container>
+                
+
+                <ng-container matColumnDef="Action">
+                    <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> 
+                        <div class="mt-3">
+                            <button mat-icon-button color="primary">
+                               <mat-icon aria-label="Edit" (click)="Update(element,true)" class="material-icons">create</mat-icon>
+                            </button> 
+                               
+                            <button mat-icon-button color="warn">
+                                <mat-icon aria-label="Add" (click)="deleteData(element)" class="f-18">delete</mat-icon>
+                            </button>
+                        </div>  
+                    </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+        </mat-table>
+
+
+</div>
+</mat-card>
+</div>
